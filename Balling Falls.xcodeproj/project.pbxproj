@@ -14,8 +14,6 @@
 		5256F56A1BE00A98008D8318 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5256F5681BE00A98008D8318 /* Main.storyboard */; };
 		5256F56C1BE00A98008D8318 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5256F56B1BE00A98008D8318 /* Assets.xcassets */; };
 		5256F56F1BE00A98008D8318 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5256F56D1BE00A98008D8318 /* LaunchScreen.storyboard */; };
-		5256F57A1BE00A98008D8318 /* Balling_FallsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5256F5791BE00A98008D8318 /* Balling_FallsTests.swift */; };
-		5256F5851BE00A98008D8318 /* Balling_FallsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5256F5841BE00A98008D8318 /* Balling_FallsUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,11 +44,7 @@
 		5256F56E1BE00A98008D8318 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5256F5701BE00A98008D8318 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5256F5751BE00A98008D8318 /* Balling FallsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Balling FallsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5256F5791BE00A98008D8318 /* Balling_FallsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balling_FallsTests.swift; sourceTree = "<group>"; };
-		5256F57B1BE00A98008D8318 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5256F5801BE00A98008D8318 /* Balling FallsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Balling FallsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5256F5841BE00A98008D8318 /* Balling_FallsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balling_FallsUITests.swift; sourceTree = "<group>"; };
-		5256F5861BE00A98008D8318 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,8 +76,6 @@
 			isa = PBXGroup;
 			children = (
 				5256F55F1BE00A98008D8318 /* Balling Falls */,
-				5256F5781BE00A98008D8318 /* Balling FallsTests */,
-				5256F5831BE00A98008D8318 /* Balling FallsUITests */,
 				5256F55E1BE00A98008D8318 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -111,24 +103,6 @@
 				5256F5701BE00A98008D8318 /* Info.plist */,
 			);
 			path = "Balling Falls";
-			sourceTree = "<group>";
-		};
-		5256F5781BE00A98008D8318 /* Balling FallsTests */ = {
-			isa = PBXGroup;
-			children = (
-				5256F5791BE00A98008D8318 /* Balling_FallsTests.swift */,
-				5256F57B1BE00A98008D8318 /* Info.plist */,
-			);
-			path = "Balling FallsTests";
-			sourceTree = "<group>";
-		};
-		5256F5831BE00A98008D8318 /* Balling FallsUITests */ = {
-			isa = PBXGroup;
-			children = (
-				5256F5841BE00A98008D8318 /* Balling_FallsUITests.swift */,
-				5256F5861BE00A98008D8318 /* Info.plist */,
-			);
-			path = "Balling FallsUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,7 +247,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5256F57A1BE00A98008D8318 /* Balling_FallsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +254,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5256F5851BE00A98008D8318 /* Balling_FallsUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
