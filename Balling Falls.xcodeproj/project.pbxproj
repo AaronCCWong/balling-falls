@@ -492,6 +492,7 @@
 				5256F58B1BE00A98008D8318 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5256F58C1BE00A98008D8318 /* Build configuration list for PBXNativeTarget "Balling FallsTests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +501,7 @@
 				5256F58E1BE00A98008D8318 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5256F58F1BE00A98008D8318 /* Build configuration list for PBXNativeTarget "Balling FallsUITests" */ = {
 			isa = XCConfigurationList;
@@ -508,6 +510,7 @@
 				5256F5911BE00A98008D8318 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
