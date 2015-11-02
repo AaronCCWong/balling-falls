@@ -11,15 +11,18 @@ import SpriteKit
 let BallCategoryName = "red-ball"
 
 class GameScene: SKScene {
+    var balls: [SKSpriteNode] = []
+    
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
         
-        let borderBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
+        let borderBody = SKPhysicsBody(edgeLoopFromRect: CGRect(x: 0,y: 0, width: self.frame.size.width + 300, height: self.frame.size.height))
         borderBody.friction = 0
         self.physicsBody = borderBody
         
         let ball = childNodeWithName(BallCategoryName) as! SKSpriteNode
-        ball.physicsBody!.applyImpulse(CGVectorMake(100, -10))
+        balls.append(ball)
+        ball.physicsBody!.applyImpulse(CGVectorMake(100, -9.8))
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -28,5 +31,8 @@ class GameScene: SKScene {
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+        if balls[0].position.x >= 1100 {
+            balls[0].removeFromParent()
+        }
     }
 }
