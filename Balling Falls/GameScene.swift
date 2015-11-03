@@ -8,8 +8,6 @@
 
 import SpriteKit
 
-var ballsNum = 1
-
 class GameScene: SKScene {
     var balls: [SKShapeNode] = []
     let player: Player = Player()
@@ -17,7 +15,8 @@ class GameScene: SKScene {
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
         
-        let borderBody = SKPhysicsBody(edgeLoopFromRect: CGRect(x: 0, y: 0, width: self.frame.size.width + 300, height: self.frame.size.height))
+        let frameEdge = CGRect(x: 0, y: 0, width: self.frame.size.width + 300, height: self.frame.size.height)
+        let borderBody = SKPhysicsBody(edgeLoopFromRect: frameEdge)
         borderBody.friction = 0
         self.physicsBody = borderBody
         
@@ -34,23 +33,29 @@ class GameScene: SKScene {
         for ball in balls {
             if ball.position.x >= 1100 {
                 self.removeBall(balls.indexOf(ball)!)
+                self.addBall()
             }
         }
     }
     
     func addBall() {
-        let ball = SKShapeNode(circleOfRadius: 20)
-        ball.strokeColor = UIColor(red: 255, green: 0, blue: 0, alpha: 0.5)
+        let randomHeight = Int(arc4random_uniform(100)) + 500
+        let randomRadius = CGFloat(arc4random_uniform(25)) + 10
+        let randomXVelocity = CGFloat(arc4random_uniform(40)) + 10
+        
+        let ball = SKShapeNode(circleOfRadius: randomRadius)
+        ball.strokeColor = UIColor(red: self.randomRGB(), green: self.randomRGB(), blue: self.randomRGB(), alpha: 1)
+        print(self.randomRGB())
         ball.lineWidth = 4
         self.addChild(ball)
         
-        ball.position = CGPoint(x: 0, y: 510)
+        ball.position = CGPoint(x: 0, y: randomHeight)
         ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.frame.size.width/2)
         ball.physicsBody!.friction = 0
         ball.physicsBody!.restitution = 1
-        ball.physicsBody!.linearDamping = 0.1
+        ball.physicsBody!.linearDamping = 0.01
         ball.physicsBody!.angularDamping = 0
-        ball.physicsBody!.applyImpulse(CGVectorMake(100, -10))
+        ball.physicsBody!.applyImpulse(CGVectorMake(randomXVelocity, -10))
         
         balls.append(ball)
     }
@@ -63,5 +68,9 @@ class GameScene: SKScene {
     func addPlayer() {
         player.position = CGPoint(x: CGRectGetMidX(self.frame), y: 50)
         self.addChild(player)
+    }
+    
+    func randomRGB() -> CGFloat {
+        return CGFloat(drand48())
     }
 }
