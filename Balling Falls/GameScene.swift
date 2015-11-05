@@ -7,10 +7,15 @@
 //
 
 import SpriteKit
+import Foundation
+
+let colliderTypePlayer = UInt32(2)
+let colliderTypeWall = UInt32(1)
+let colliderTypeBall = UInt32(0)
 
 class GameScene: SKScene {
     var balls: [SKShapeNode] = []
-    let player: Player = Player()
+    let player: Player = Player(width: 50, height: 150)
     
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
@@ -18,10 +23,14 @@ class GameScene: SKScene {
         let frameEdge = CGRect(x: 0, y: 0, width: self.frame.size.width + 300, height: self.frame.size.height)
         let borderBody = SKPhysicsBody(edgeLoopFromRect: frameEdge)
         borderBody.friction = 0
+        borderBody.categoryBitMask = colliderTypeWall
         self.physicsBody = borderBody
         
         self.addBall()
         self.addPlayer()
+        
+        // name this to turn off
+        NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: Selector("addBall"), userInfo: nil, repeats: true)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -39,24 +48,11 @@ class GameScene: SKScene {
     }
     
     func addBall() {
-        let randomHeight = Int(arc4random_uniform(100)) + 500
         let randomRadius = CGFloat(arc4random_uniform(25)) + 10
-        let randomXVelocity = CGFloat(arc4random_uniform(40)) + 10
         
-        let ball = SKShapeNode(circleOfRadius: randomRadius)
-        ball.strokeColor = UIColor(red: self.randomRGB(), green: self.randomRGB(), blue: self.randomRGB(), alpha: 1)
-        print(self.randomRGB())
-        ball.lineWidth = 4
+        let ball = Ball(circleOfRadius: randomRadius)
         self.addChild(ball)
-        
-        ball.position = CGPoint(x: 0, y: randomHeight)
-        ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.frame.size.width/2)
-        ball.physicsBody!.friction = 0
-        ball.physicsBody!.restitution = 1
-        ball.physicsBody!.linearDamping = 0.01
-        ball.physicsBody!.angularDamping = 0
-        ball.physicsBody!.applyImpulse(CGVectorMake(randomXVelocity, -10))
-        
+        ball.addPhysics()
         balls.append(ball)
     }
     
@@ -68,9 +64,5 @@ class GameScene: SKScene {
     func addPlayer() {
         player.position = CGPoint(x: CGRectGetMidX(self.frame), y: 50)
         self.addChild(player)
-    }
-    
-    func randomRGB() -> CGFloat {
-        return CGFloat(drand48())
     }
 }
