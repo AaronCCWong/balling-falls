@@ -40,6 +40,10 @@ class Player: SKShapeNode {
         self.path = CGPathCreateWithRect(CGRect(origin: CGPointZero, size: CGSize(width: width, height: height)), nil)
         
         self.fillColor = UIColor(red: 255, green: 0, blue: 0, alpha: 0.6)
+        self.physicsBody = SKPhysicsBody(rectangleOfSize: self.frame.size)
+        self.physicsBody!.dynamic = true
+        self.physicsBody!.affectedByGravity = false
+        self.physicsBody!.mass = 0.02
     }
     
     required init?(coder aDecoder: NSCoder) {

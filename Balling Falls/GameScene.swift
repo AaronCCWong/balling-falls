@@ -7,11 +7,14 @@
 //
 
 import SpriteKit
+import CoreMotion
 import Foundation
 
 let colliderTypePlayer = UInt32(2)
 let colliderTypeWall = UInt32(1)
 let colliderTypeBall = UInt32(0)
+
+let motionManager: CMMotionManager = CMMotionManager()
 
 class GameScene: SKScene {
     var balls: [SKShapeNode] = []
@@ -19,6 +22,7 @@ class GameScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
+        motionManager.startAccelerometerUpdates()
         
         let frameEdge = CGRect(x: 0, y: 0, width: self.frame.size.width + 300, height: self.frame.size.height)
         let borderBody = SKPhysicsBody(edgeLoopFromRect: frameEdge)
@@ -38,11 +42,20 @@ class GameScene: SKScene {
     }
    
     override func update(currentTime: CFTimeInterval) {
-        /* Called before each frame is rendered */
+        processUserMotionForUpdate(currentTime)
+        
         for ball in balls {
             if ball.position.x >= 1100 {
                 self.removeBall(balls.indexOf(ball)!)
                 self.addBall()
+            }
+        }
+    }
+    
+    func processUserMotionForUpdate(currentTime: CFTimeInterval) {
+        if let data = motionManager.accelerometerData {
+            if (fabs(data.acceleration.x) > 0.2) {
+                player.physicsBody!.applyForce(CGVectorMake(40.0 * CGFloat(data.acceleration.x), 0))
             }
         }
     }
