@@ -9,31 +9,6 @@
 import UIKit
 import SpriteKit
 
-//class Player: SKSpriteNode {
-//    init() {
-//        let player = SKTexture(imageNamed: "player1")
-//        super.init(texture: player, color: SKColor.clearColor(), size: player.size())
-//        animate()
-//    }
-//    
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//    }
-//    
-//    private func animate() {
-//        var playerTextures: [SKTexture] = []
-//        for i in 1...2 {
-//            playerTextures.append(SKTexture(imageNamed: "player\(i)"))
-//        }
-//        let playerAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(playerTextures, timePerFrame: 0.1))
-//        self.runAction(playerAnimation)
-//    }
-//    
-//    func addPhysics() {
-//        self.physicsBody = SKPhysicsBody(circleOfRadius: self.frame.size.width/2)
-//    }
-//}
-
 class Player: SKShapeNode {
     init(width: CGFloat, height: CGFloat) {
         super.init()
@@ -45,6 +20,8 @@ class Player: SKShapeNode {
         self.physicsBody!.affectedByGravity = true
         self.physicsBody!.mass = 0.02
         self.physicsBody!.categoryBitMask = colliderTypePlayer
+        self.physicsBody!.contactTestBitMask = colliderTypeBall
+        self.physicsBody!.collisionBitMask = colliderTypeBall | colliderTypeWall
     }
     
     required init?(coder aDecoder: NSCoder) {

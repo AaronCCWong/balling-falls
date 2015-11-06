@@ -16,15 +16,16 @@ let colliderTypeBall = UInt32(0)
 
 let motionManager: CMMotionManager = CMMotionManager()
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     var balls: [SKShapeNode] = []
-    let player: Player = Player(width: 50, height: 150)
+    let player: Player = Player(width: 40, height: 100)
     let tilt: Double = 0.1
-    let velocity: CGFloat = 1000.0
+    let velocity: CGFloat = 100.0
     
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
         motionManager.startAccelerometerUpdates()
+        self.physicsWorld.contactDelegate = self
         
         let frameEdge = CGRect(x: 0, y: 0, width: self.frame.size.width + 300, height: self.frame.size.height)
         let borderBody = SKPhysicsBody(edgeLoopFromRect: frameEdge)
@@ -37,6 +38,14 @@ class GameScene: SKScene {
         
         // name this to turn off
         NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: Selector("addBall"), userInfo: nil, repeats: true)
+    }
+    
+    func didBeginContact(contact: SKPhysicsContact) {
+        self.removePlayer()
+    }
+    
+    func removePlayer() {
+        player.removeFromParent()
     }
    
     override func update(currentTime: CFTimeInterval) {

@@ -43,7 +43,9 @@ class Ball: SKShapeNode {
         self.physicsBody!.linearDamping = 0.01
         self.physicsBody!.angularDamping = 0
         self.physicsBody!.mass = 0.5
+        self.physicsBody!.dynamic = true
         self.physicsBody!.categoryBitMask = colliderTypeBall
+        self.physicsBody!.contactTestBitMask = colliderTypePlayer
         self.physicsBody!.collisionBitMask = colliderTypeWall | colliderTypePlayer
         self.physicsBody!.applyImpulse(CGVectorMake(randomXVelocity, -10))
     }
