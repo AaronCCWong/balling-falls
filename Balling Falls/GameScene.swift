@@ -54,8 +54,8 @@ class GameScene: SKScene {
     
     func processUserMotionForUpdate(currentTime: CFTimeInterval) {
         if let data = motionManager.accelerometerData {
-            if (fabs(data.acceleration.x) > 0.2) {
-                player.physicsBody!.applyForce(CGVectorMake(40.0 * CGFloat(data.acceleration.x), 0))
+            if (fabs(data.acceleration.y) > 0.2) {
+                player.physicsBody!.applyForce(CGVectorMake(40.0 * CGFloat(data.acceleration.y), 0))
             }
         }
     }

@@ -44,6 +44,7 @@ class Player: SKShapeNode {
         self.physicsBody!.dynamic = true
         self.physicsBody!.affectedByGravity = false
         self.physicsBody!.mass = 0.02
+        self.physicsBody!.categoryBitMask = colliderTypePlayer
     }
     
     required init?(coder aDecoder: NSCoder) {
