@@ -34,7 +34,7 @@ class Ball: SKShapeNode {
     
     func addPhysics() {
         let randomHeight = Int(arc4random_uniform(100)) + 500
-        let randomXVelocity = CGFloat(arc4random_uniform(80)) + 130
+        let randomXVelocity = CGFloat(arc4random_uniform(300)) + 100
         
         self.position = CGPoint(x: 0, y: randomHeight)
         self.physicsBody = SKPhysicsBody(circleOfRadius: self.frame.size.width/2)

@@ -12,7 +12,7 @@ import SpriteKit
 class Player: SKShapeNode {
     init(width: CGFloat, height: CGFloat) {
         super.init()
-        self.path = CGPathCreateWithRect(CGRect(origin: CGPointZero, size: CGSize(width: width, height: height)), nil)
+        self.path = CGPathCreateWithRect(CGRect(origin: CGPointMake(10.0, -20.0), size: CGSize(width: width, height: height)), nil)
         
         self.fillColor = UIColor(red: 255, green: 0, blue: 0, alpha: 0.6)
         self.physicsBody = SKPhysicsBody(rectangleOfSize: self.frame.size)

@@ -18,7 +18,7 @@ let motionManager: CMMotionManager = CMMotionManager()
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     var balls: [SKShapeNode] = []
-    let player: Player = Player(width: 40, height: 100)
+    let player: Player = Player(width: 30, height: 80)
     let tilt: Double = 0.1
     let velocity: CGFloat = 100.0
     
@@ -63,7 +63,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if let data = motionManager.accelerometerData {
             if (fabs(data.acceleration.y) > tilt * 2 && abs(Int(player.physicsBody!.velocity.dx)) < 700) {
                 let direction = CGFloat(data.acceleration.y / fabs(data.acceleration.y))
-                player.physicsBody!.applyForce(CGVectorMake(100.0 * direction, 0))
+                player.physicsBody!.applyForce(CGVectorMake(velocity * direction, 0))
             } else if (abs(Int(player.physicsBody!.velocity.dx)) > 0) {
                 player.physicsBody!.applyForce(CGVectorMake(-player.physicsBody!.velocity.dx / 2, 0))
             }
