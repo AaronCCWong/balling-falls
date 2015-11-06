@@ -19,6 +19,8 @@ let motionManager: CMMotionManager = CMMotionManager()
 class GameScene: SKScene {
     var balls: [SKShapeNode] = []
     let player: Player = Player(width: 50, height: 150)
+    let tilt: Double = 0.1
+    let velocity: CGFloat = 1000.0
     
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
@@ -36,10 +38,6 @@ class GameScene: SKScene {
         // name this to turn off
         NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: Selector("addBall"), userInfo: nil, repeats: true)
     }
-    
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        /* Called when a touch begins */
-    }
    
     override func update(currentTime: CFTimeInterval) {
         processUserMotionForUpdate(currentTime)
@@ -54,8 +52,11 @@ class GameScene: SKScene {
     
     func processUserMotionForUpdate(currentTime: CFTimeInterval) {
         if let data = motionManager.accelerometerData {
-            if (fabs(data.acceleration.y) > 0.2) {
-                player.physicsBody!.applyForce(CGVectorMake(40.0 * CGFloat(data.acceleration.y), 0))
+            if (fabs(data.acceleration.y) > tilt * 2 && abs(Int(player.physicsBody!.velocity.dx)) < 700) {
+                let direction = CGFloat(data.acceleration.y / fabs(data.acceleration.y))
+                player.physicsBody!.applyForce(CGVectorMake(100.0 * direction, 0))
+            } else if (abs(Int(player.physicsBody!.velocity.dx)) > 0) {
+                player.physicsBody!.applyForce(CGVectorMake(-player.physicsBody!.velocity.dx / 2, 0))
             }
         }
     }

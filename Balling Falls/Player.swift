@@ -42,7 +42,7 @@ class Player: SKShapeNode {
         self.fillColor = UIColor(red: 255, green: 0, blue: 0, alpha: 0.6)
         self.physicsBody = SKPhysicsBody(rectangleOfSize: self.frame.size)
         self.physicsBody!.dynamic = true
-        self.physicsBody!.affectedByGravity = false
+        self.physicsBody!.affectedByGravity = true
         self.physicsBody!.mass = 0.02
         self.physicsBody!.categoryBitMask = colliderTypePlayer
     }
