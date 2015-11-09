@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  Balling Falls
 //
-//  Created by Aaron Wong on 10/27/15.
-//  Copyright © 2015 Aaron Wong. All rights reserved.
+//  Created by Aaron Wong and Derek Chan on 10/27/15.
+//  Copyright © 2015 Aaron Wong and Derek Chan. All rights reserved.
 //
 
 import UIKit

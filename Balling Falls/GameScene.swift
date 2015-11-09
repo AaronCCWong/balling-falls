@@ -2,8 +2,8 @@
 //  GameScene.swift
 //  Balling Falls
 //
-//  Created by Aaron Wong on 10/27/15.
-//  Copyright (c) 2015 Aaron Wong. All rights reserved.
+//  Created by Aaron Wong and Derek Chan on 10/27/15.
+//  Copyright (c) 2015 Aaron Wong and Derek Chan. All rights reserved.
 //
 
 import UIKit
@@ -48,7 +48,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         isGameOver = false
         
         if scoreText != nil {
-            scoreText!.removeFromParent()
+            scoreText.removeFromParent()
         }
         
         for ball in balls {
@@ -66,7 +66,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addBall()
         self.addPlayer()
         
-        
         timer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: Selector("addBall"), userInfo: nil, repeats: true)
     }
     
@@ -78,9 +77,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player?.removeFromParent()
         self.gameOver()
     }
-   
+    
     override func update(currentTime: CFTimeInterval) {
-        processUserMotionForUpdate(currentTime)
+        self.processUserMotionForUpdate(currentTime)
 
         for ball in balls {
             if ball.position.x >= 1100 {

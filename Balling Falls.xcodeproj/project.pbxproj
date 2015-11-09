@@ -187,7 +187,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0710;
-				ORGANIZATIONNAME = "Aaron Wong";
+				ORGANIZATIONNAME = "Aaron Wong and Derek Chan";
 				TargetAttributes = {
 					5256F55C1BE00A98008D8318 = {
 						CreatedOnToolsVersion = 7.1;

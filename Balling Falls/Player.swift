@@ -2,8 +2,8 @@
 //  Player.swift
 //  Balling Falls
 //
-//  Created by Aaron Wong on 11/2/15.
-//  Copyright © 2015 Aaron Wong. All rights reserved.
+//  Created by Aaron Wong and Derek Chan on 11/2/15.
+//  Copyright © 2015 Aaron Wong and Derek Chan. All rights reserved.
 //
 
 import UIKit
