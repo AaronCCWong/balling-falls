@@ -28,7 +28,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
         self.backgroundColor = SKColor.whiteColor()
-        player = Player(width: 30, height: 80)
         
         motionManager.startAccelerometerUpdates()
         self.physicsWorld.contactDelegate = self
@@ -38,6 +37,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         borderBody.friction = 0
         borderBody.categoryBitMask = colliderTypeWall
         self.physicsBody = borderBody
+        
+        self.startGame()
+    }
+    
+    func startGame() {
+        for ball in balls {
+            self.removeBall(balls.indexOf(ball)!)
+        }
+    
+        player = Player(width: 30, height: 80)
         
         self.addBall()
         self.addPlayer()
@@ -105,6 +114,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func showGameOverScreen() {
-
+        let playAgainGameButton = GameButton(defaultButtonImage: "playAgainButton", activeButtonImage: "playAgainButton", buttonAction: startGame)
+        playAgainGameButton.position = CGPointMake(self.frame.width / 2, self.frame.height / 2)
+        self.addChild(playAgainGameButton)
     }
 }
