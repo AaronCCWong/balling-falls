@@ -25,6 +25,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var timer: NSTimer?
     var isGameOver = false
     
+    var score: Int = 0
+    var scoreText: SKLabelNode!
+    
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
         self.backgroundColor = SKColor.whiteColor()
@@ -32,7 +35,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         motionManager.startAccelerometerUpdates()
         self.physicsWorld.contactDelegate = self
         
-        let frameEdge = CGRect(x: 0, y: 0, width: self.frame.size.width + 300, height: self.frame.size.height)
+        let frameEdge = CGRect(x: -20, y: 0, width: self.frame.size.width + 300, height: self.frame.size.height)
         let borderBody = SKPhysicsBody(edgeLoopFromRect: frameEdge)
         borderBody.friction = 0
         borderBody.categoryBitMask = colliderTypeWall
@@ -42,14 +45,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func startGame() {
+        isGameOver = false
+        
+        if scoreText != nil {
+            scoreText!.removeFromParent()
+        }
+        
         for ball in balls {
             self.removeBall(balls.indexOf(ball)!)
         }
     
         player = Player(width: 30, height: 80)
+        scoreText = SKLabelNode(fontNamed: "IndieFlower")
+        scoreText.fontSize = 30
+        scoreText.fontColor = SKColor.blackColor()
+        scoreText.text = "Score: \(score)"
+        scoreText.position = CGPoint(x: size.width / 2, y: size.width / 2)
+        self.addChild(scoreText)
         
         self.addBall()
         self.addPlayer()
+        
         
         timer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: Selector("addBall"), userInfo: nil, repeats: true)
     }
@@ -71,6 +87,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.removeBall(balls.indexOf(ball)!)
                 if (!isGameOver) {
                     self.addBall()
+                    score += 10
+                    scoreText.text = "Score: \(score)"
                 }
             }
         }
@@ -110,6 +128,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         isGameOver = true
         timer?.invalidate()
         timer = nil
+        score = 0
         self.showGameOverScreen()
     }
     

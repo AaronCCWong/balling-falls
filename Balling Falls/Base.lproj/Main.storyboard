@@ -4,6 +4,11 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="IndieFlower.ttf">
+            <string>IndieFlower</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Game Start View Controller-->
         <scene sceneID="r1B-Qv-ya4">
@@ -18,8 +23,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FlO-kj-PXx">
-                                <rect key="frame" x="247" y="193" width="78" height="30"/>
+                                <rect key="frame" x="247" y="193" width="121" height="30"/>
                                 <animations/>
+                                <fontDescription key="fontDescription" name="IndieFlower" family="Indie Flower" pointSize="15"/>
                                 <state key="normal" title="Start Game"/>
                                 <connections>
                                     <segue destination="brm-y9-Bkz" kind="show" id="pYB-bR-cTs"/>
