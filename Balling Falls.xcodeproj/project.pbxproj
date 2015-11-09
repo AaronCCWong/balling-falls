@@ -16,6 +16,7 @@
 		5256F56A1BE00A98008D8318 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5256F5681BE00A98008D8318 /* Main.storyboard */; };
 		5256F56C1BE00A98008D8318 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5256F56B1BE00A98008D8318 /* Assets.xcassets */; };
 		5256F56F1BE00A98008D8318 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5256F56D1BE00A98008D8318 /* LaunchScreen.storyboard */; };
+		52839FD31BED6F160022C2B9 /* GameStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52839FD21BED6F160022C2B9 /* GameStartViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		5256F5701BE00A98008D8318 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5256F5751BE00A98008D8318 /* Balling FallsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Balling FallsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5256F5801BE00A98008D8318 /* Balling FallsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Balling FallsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		52839FD21BED6F160022C2B9 /* GameStartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStartViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				5256F5601BE00A98008D8318 /* AppDelegate.swift */,
 				5256F5621BE00A98008D8318 /* GameScene.sks */,
 				5256F5641BE00A98008D8318 /* GameScene.swift */,
+				52839FD21BED6F160022C2B9 /* GameStartViewController.swift */,
 				520771241BEBB92100C2365F /* Ball.swift */,
 				520771201BE8340A00C2365F /* Player.swift */,
 				5256F5661BE00A98008D8318 /* GameViewController.swift */,
@@ -246,6 +249,7 @@
 			files = (
 				5256F5651BE00A98008D8318 /* GameScene.swift in Sources */,
 				5256F5671BE00A98008D8318 /* GameViewController.swift in Sources */,
+				52839FD31BED6F160022C2B9 /* GameStartViewController.swift in Sources */,
 				520771251BEBB92100C2365F /* Ball.swift in Sources */,
 				520771211BE8340A00C2365F /* Player.swift in Sources */,
 				5256F5611BE00A98008D8318 /* AppDelegate.swift in Sources */,

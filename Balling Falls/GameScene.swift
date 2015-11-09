@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Aaron Wong. All rights reserved.
 //
 
+import UIKit
 import SpriteKit
 import CoreMotion
 import Foundation
@@ -18,12 +19,17 @@ let motionManager: CMMotionManager = CMMotionManager()
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     var balls: [SKShapeNode] = []
-    let player: Player = Player(width: 30, height: 80)
+    var player: Player!
     let tilt: Double = 0.1
     let velocity: CGFloat = 100.0
+    var timer: NSTimer?
+    var isGameOver = false
     
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
+        self.backgroundColor = SKColor.whiteColor()
+        player = Player(width: 30, height: 80)
+        
         motionManager.startAccelerometerUpdates()
         self.physicsWorld.contactDelegate = self
         
@@ -36,8 +42,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addBall()
         self.addPlayer()
         
-        // name this to turn off
-        NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: Selector("addBall"), userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: Selector("addBall"), userInfo: nil, repeats: true)
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
@@ -45,16 +50,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func removePlayer() {
-        player.removeFromParent()
+        player?.removeFromParent()
+        self.gameOver()
     }
    
     override func update(currentTime: CFTimeInterval) {
         processUserMotionForUpdate(currentTime)
-        
+
         for ball in balls {
             if ball.position.x >= 1100 {
                 self.removeBall(balls.indexOf(ball)!)
-                self.addBall()
+                if (!isGameOver) {
+                    self.addBall()
+                }
             }
         }
     }
@@ -87,5 +95,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func addPlayer() {
         player.position = CGPoint(x: CGRectGetMidX(self.frame), y: 50)
         self.addChild(player)
+    }
+    
+    func gameOver() {
+        isGameOver = true
+        timer?.invalidate()
+        timer = nil
+        self.showGameOverScreen()
+    }
+    
+    func showGameOverScreen() {
+
     }
 }

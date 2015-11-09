@@ -1,27 +1,59 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="m06-IH-CV0">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
-        <!--Game View Controller-->
-        <scene sceneID="tXr-a1-R10">
+        <!--Game Start View Controller-->
+        <scene sceneID="r1B-Qv-ya4">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="Balling_Falls" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="m06-IH-CV0" customClass="GameStartViewController" customModule="Balling_Falls" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="8aa-yV-Osq"/>
-                        <viewControllerLayoutGuide type="bottom" id="qHh-Mt-9TT"/>
+                        <viewControllerLayoutGuide type="top" id="fac-cW-OAq"/>
+                        <viewControllerLayoutGuide type="bottom" id="DbB-s8-NIj"/>
                     </layoutGuides>
-                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
+                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="V4P-dU-jA5" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FlO-kj-PXx">
+                                <rect key="frame" x="247" y="193" width="78" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Start Game"/>
+                                <connections>
+                                    <segue destination="brm-y9-Bkz" kind="show" id="pYB-bR-cTs"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wyg-BR-T4Z" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="841" y="268"/>
+        </scene>
+        <!--Game View Controller-->
+        <scene sceneID="3Lq-JH-eYo">
+            <objects>
+                <viewController id="brm-y9-Bkz" customClass="GameViewController" customModule="Balling_Falls" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZBs-Jg-1a4"/>
+                        <viewControllerLayoutGuide type="bottom" id="ebH-X4-Uy8"/>
+                    </layoutGuides>
+                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="kiU-Na-R4h" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Aha-fr-hO6" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1526" y="268"/>
         </scene>
     </scenes>
 </document>
