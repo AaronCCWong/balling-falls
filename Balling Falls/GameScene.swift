@@ -66,7 +66,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreText.fontSize = 30
         scoreText.fontColor = SKColor.blackColor()
         scoreText.text = "Score: \(score)"
-        scoreText.position = CGPoint(x: size.width - 100, y: size.height - 100)
+        scoreText.position = CGPoint(x: size.width - 130, y: size.height - 90)
         self.addChild(scoreText)
         
         self.addBall()
