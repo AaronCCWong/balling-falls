@@ -1,19 +1,19 @@
 //
-//  Ball.swift
+//  DeathBall.swift
 //  Balling Falls
 //
-//  Created by Aaron Wong and Derek Chan on 11/5/15.
+//  Created by Aaron Wong on 11/10/15.
 //  Copyright © 2015 Aaron Wong and Derek Chan. All rights reserved.
 //
 
 import UIKit
 import SpriteKit
 
-class Ball: SKShapeNode {
+class DeathBall: SKShapeNode {
     override init() {
         super.init()
         
-        let randomRadius = CGFloat(arc4random_uniform(25)) + 10
+        let randomRadius = CGFloat(arc4random_uniform(25)) + 1
         let diameter = randomRadius * 2
         self.path = CGPathCreateWithEllipseInRect(CGRect(origin: CGPointZero, size: CGSize(width: diameter, height: diameter)), nil)
         
@@ -33,11 +33,10 @@ class Ball: SKShapeNode {
         return CGFloat(drand48())
     }
     
-    func addPhysics() {
-        let randomHeight = Int(arc4random_uniform(100)) + 500
-        let randomXVelocity = CGFloat(arc4random_uniform(300)) + 100
+    func addPhysics(position: CGPoint) {
+        let randomVelocity = CGFloat(arc4random_uniform(800))
         
-        self.position = CGPoint(x: -20, y: randomHeight)
+        self.position = position
         self.physicsBody = SKPhysicsBody(circleOfRadius: self.frame.size.width/2)
         self.physicsBody!.friction = 0
         self.physicsBody!.restitution = 0.95
@@ -46,8 +45,8 @@ class Ball: SKShapeNode {
         self.physicsBody!.mass = 0.5
         self.physicsBody!.dynamic = true
         self.physicsBody!.categoryBitMask = colliderTypeBall
-        self.physicsBody!.contactTestBitMask = colliderTypePlayer
-        self.physicsBody!.collisionBitMask = colliderTypeWall | colliderTypePlayer
-        self.physicsBody!.applyImpulse(CGVectorMake(randomXVelocity, -10))
+        self.physicsBody!.contactTestBitMask = colliderTypePlayer | colliderTypeBall
+        self.physicsBody!.collisionBitMask = colliderTypeWall | colliderTypeBall
+        self.physicsBody!.applyImpulse(CGVectorMake(randomVelocity - 400, randomVelocity - 400))
     }
 }

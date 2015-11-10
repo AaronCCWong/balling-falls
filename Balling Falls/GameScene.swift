@@ -80,7 +80,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func removePlayer() {
+        isGameOver = true
+        
+        let playerPosition = player.position
         player?.removeFromParent()
+        
+        for _ in 0...score/10 {
+            let deathBall = DeathBall()
+            self.addChild(deathBall)
+            deathBall.addPhysics(playerPosition)
+            balls.append(deathBall)
+        }
+        
         self.gameOver()
     }
     
@@ -111,9 +122,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func addBall() {
-        let randomRadius = CGFloat(arc4random_uniform(25)) + 10
-        
-        let ball = Ball(circleOfRadius: randomRadius)
+        let ball = Ball()
         self.addChild(ball)
         ball.addPhysics()
         balls.append(ball)
@@ -131,7 +140,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func gameOver() {
-        isGameOver = true
         timer?.invalidate()
         timer = nil
         score = 0
