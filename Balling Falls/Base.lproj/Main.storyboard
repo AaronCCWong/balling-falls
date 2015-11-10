@@ -22,13 +22,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FlO-kj-PXx">
-                                <rect key="frame" x="247" y="193" width="121" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="98t-qx-oSn">
+                                <rect key="frame" x="277" y="194" width="113" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="IndieFlower" family="Indie Flower" pointSize="15"/>
-                                <state key="normal" title="Start Game"/>
+                                <state key="normal" title="Start Game">
+                                    <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                </state>
                                 <connections>
-                                    <segue destination="brm-y9-Bkz" kind="show" id="pYB-bR-cTs"/>
+                                    <segue destination="brm-y9-Bkz" kind="showDetail" animates="NO" id="GmV-CH-rgW"/>
                                 </connections>
                             </button>
                         </subviews>

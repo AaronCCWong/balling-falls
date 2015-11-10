@@ -28,6 +28,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var score: Int = 0
     var scoreText: SKLabelNode!
     
+    var playAgainGameButton: GameButton!
+    
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
         self.backgroundColor = SKColor.whiteColor()
@@ -49,6 +51,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if scoreText != nil {
             scoreText.removeFromParent()
+        }
+        
+        if playAgainGameButton != nil {
+            playAgainGameButton.removeFromParent()
         }
         
         for ball in balls {
@@ -121,6 +127,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func addPlayer() {
         player.position = CGPoint(x: CGRectGetMidX(self.frame), y: 50)
         self.addChild(player)
+        player.addPhysics()
     }
     
     func gameOver() {
@@ -132,7 +139,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func showGameOverScreen() {
-        let playAgainGameButton = GameButton(defaultButtonImage: "playAgainButton", activeButtonImage: "playAgainButton", buttonAction: startGame)
+        playAgainGameButton = GameButton(defaultButtonImage: "playAgainButton", activeButtonImage: "playAgainButton", buttonAction: startGame)
         playAgainGameButton.position = CGPointMake(self.frame.width / 2, self.frame.height / 2)
         self.addChild(playAgainGameButton)
     }
