@@ -10,8 +10,10 @@ import UIKit
 import SpriteKit
 
 class Ball: SKShapeNode {
-    override init() {
+    var isGameOver: Bool?
+    init(gameOver: Bool) {
         super.init()
+        isGameOver = gameOver
         
         let randomRadius = CGFloat(arc4random_uniform(25)) + 10
         let diameter = randomRadius * 2
@@ -34,10 +36,21 @@ class Ball: SKShapeNode {
     }
     
     func addPhysics() {
-        let randomHeight = Int(arc4random_uniform(100)) + 500
-        let randomXVelocity = CGFloat(arc4random_uniform(300)) + 100
+        var xVelocity: CGFloat?
+        var yVelocity: CGFloat?
         
-        self.position = CGPoint(x: -20, y: randomHeight)
+        if isGameOver == true {
+            self.position = playerPosition!
+            print(self.position)
+            xVelocity = direction() * randomVelocity()
+            yVelocity = direction() * randomVelocity()
+        } else {
+            let randomHeight = Int(arc4random_uniform(100)) + 500
+            self.position = CGPoint(x: -20, y: randomHeight)
+            xVelocity = randomVelocity()
+            yVelocity = -10
+        }
+        
         self.physicsBody = SKPhysicsBody(circleOfRadius: self.frame.size.width/2)
         self.physicsBody!.friction = 0
         self.physicsBody!.restitution = 0.95
@@ -48,6 +61,17 @@ class Ball: SKShapeNode {
         self.physicsBody!.categoryBitMask = colliderTypeBall
         self.physicsBody!.contactTestBitMask = colliderTypePlayer
         self.physicsBody!.collisionBitMask = colliderTypeWall | colliderTypePlayer
-        self.physicsBody!.applyImpulse(CGVectorMake(randomXVelocity, -10))
+        self.physicsBody!.applyImpulse(CGVectorMake(xVelocity!, yVelocity!))
+    }
+    
+    func direction() -> CGFloat {
+        if arc4random_uniform(10) < 5 {
+            return CGFloat(1);
+        }
+        return CGFloat(-1);
+    }
+    
+    func randomVelocity() -> CGFloat {
+        return CGFloat(arc4random_uniform(300)) + 100
     }
 }

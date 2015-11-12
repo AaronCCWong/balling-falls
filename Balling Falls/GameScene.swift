@@ -15,6 +15,7 @@ let colliderTypeRoadBlock = UInt32(3)
 let colliderTypePlayer = UInt32(2)
 let colliderTypeWall = UInt32(1)
 let colliderTypeBall = UInt32(0)
+var playerPosition: CGPoint?
 
 let motionManager: CMMotionManager = CMMotionManager()
 
@@ -44,7 +45,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         borderBody.categoryBitMask = colliderTypeWall
         self.physicsBody = borderBody
         
-        self.addRightRoadBlock()
+//        self.addRightRoadBlock()
         
         self.startGame()
     }
@@ -85,14 +86,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func removePlayer() {
         isGameOver = true
 
-        let playerPosition = player.position
+        playerPosition = player.position
         player?.removeFromParent()
         
         for _ in 0...score/10 {
-            let deathBall = DeathBall()
-            self.addChild(deathBall)
-            deathBall.addPhysics(playerPosition)
-            balls.append(deathBall)
+            self.addBall()
         }
         
         self.gameOver()
@@ -125,7 +123,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func addBall() {
-        let ball = Ball()
+        let ball = Ball(gameOver: isGameOver)
         self.addChild(ball)
         ball.addPhysics()
         balls.append(ball)
