@@ -41,7 +41,6 @@ class Ball: SKShapeNode {
         
         if isGameOver == true {
             self.position = playerPosition!
-            print(self.position)
             xVelocity = direction() * randomVelocity()
             yVelocity = direction() * randomVelocity()
         } else {

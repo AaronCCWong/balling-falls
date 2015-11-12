@@ -9,22 +9,11 @@
 import UIKit
 import SpriteKit
 
-//var playerStandingFrames : [SKTexture]!
-//let playerStandingAtlas = SKTextureAtlas(named: "PlayerStandingImages")
-//var standFrames = [SKTexture]()
-
 class Player: SKSpriteNode {
     init() {
-//        let numImages = playerStandingAtlas.textureNames.count
-//        for var i = 1; i <= numImages/2; i++ {
-//            let playerTextureName = "Standing\(i)"
-//            standFrames.append(playerStandingAtlas.textureNamed(playerTextureName))
-//        }
-//        
-//        playerStandingFrames = standFrames
-//        let texture = playerStandingFrames[0]
         let texture = SKTexture(imageNamed: "Standing1")
         super.init(texture: texture, color: SKColor.whiteColor(), size: texture.size())
+        self.standingAnimate()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -36,17 +25,19 @@ class Player: SKSpriteNode {
         self.physicsBody!.dynamic = true
         self.physicsBody!.affectedByGravity = true
         self.physicsBody!.mass = 0.02
+        self.physicsBody!.allowsRotation = false
         self.physicsBody!.categoryBitMask = colliderTypePlayer
         self.physicsBody!.contactTestBitMask = colliderTypeBall
         self.physicsBody!.collisionBitMask = colliderTypeWall | colliderTypeBall | colliderTypeRoadBlock
     }
     
-//    func standing() {
-//        self.runAction(SKAction.repeatActionForever(
-//            SKAction.animateWithTextures(playerStandingFrames,
-//                timePerFrame: 1,
-//                resize: false,
-//                restore: true)),
-//            withKey:"standingInPlacePlayer")
-//    }
+    func standingAnimate() {
+        var playerTextures: [SKTexture] = []
+        for i in 1...3 {
+            playerTextures.append(SKTexture(imageNamed: "Standing\(i)"))
+        }
+        playerTextures.append(SKTexture(imageNamed: "Standing2"))
+        let playerAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(playerTextures, timePerFrame: 0.1))
+        self.runAction(playerAnimation)
+    }
 }

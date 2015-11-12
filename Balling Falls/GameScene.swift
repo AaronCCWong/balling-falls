@@ -45,9 +45,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         borderBody.categoryBitMask = colliderTypeWall
         self.physicsBody = borderBody
         
-//        self.addRightRoadBlock()
-        
         self.startGame()
+//        self.addRightRoadBlock()
     }
     
     func startGame() {
@@ -142,16 +141,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func addRightRoadBlock() {
-        let block = SKShapeNode(rectOfSize: CGSize(width: 100, height: 100))
-        block.fillColor = SKColor.redColor()
-        block.position = CGPoint(x: 1100, y: 50)
-        self.addChild(block)
-        
-        block.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: 100, height: 100))
-        block.physicsBody!.dynamic = false
-        block.physicsBody!.affectedByGravity = true
-        block.physicsBody!.categoryBitMask = colliderTypeRoadBlock
-        block.physicsBody!.collisionBitMask = colliderTypePlayer
+        let rightBlock = RoadBlock(position: CGPoint(x: 500, y: 0))
+        self.addChild(rightBlock)
+        rightBlock.addPhysics()
     }
     
     func gameOver() {
