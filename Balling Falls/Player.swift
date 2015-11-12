@@ -9,12 +9,22 @@
 import UIKit
 import SpriteKit
 
-class Player: SKShapeNode {
-    init(width: Double, height: Double) {
-        super.init()
-        self.path = CGPathCreateWithRect(CGRect(origin: CGPointMake(10.0, -20.0), size: CGSize(width: width, height: height)), nil)
-        
-        self.fillColor = UIColor(red: 255, green: 0, blue: 0, alpha: 0.6)
+//var playerStandingFrames : [SKTexture]!
+//let playerStandingAtlas = SKTextureAtlas(named: "PlayerStandingImages")
+//var standFrames = [SKTexture]()
+
+class Player: SKSpriteNode {
+    init() {
+//        let numImages = playerStandingAtlas.textureNames.count
+//        for var i = 1; i <= numImages/2; i++ {
+//            let playerTextureName = "Standing\(i)"
+//            standFrames.append(playerStandingAtlas.textureNamed(playerTextureName))
+//        }
+//        
+//        playerStandingFrames = standFrames
+//        let texture = playerStandingFrames[0]
+        let texture = SKTexture(imageNamed: "Standing1")
+        super.init(texture: texture, color: SKColor.whiteColor(), size: texture.size())
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -22,12 +32,21 @@ class Player: SKShapeNode {
     }
     
     func addPhysics() {
-        self.physicsBody = SKPhysicsBody(rectangleOfSize: self.frame.size)
+        self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: 90, height: 90))
         self.physicsBody!.dynamic = true
         self.physicsBody!.affectedByGravity = true
         self.physicsBody!.mass = 0.02
         self.physicsBody!.categoryBitMask = colliderTypePlayer
         self.physicsBody!.contactTestBitMask = colliderTypeBall
-        self.physicsBody!.collisionBitMask = colliderTypeWall | colliderTypeBall
+        self.physicsBody!.collisionBitMask = colliderTypeWall | colliderTypeBall | colliderTypeRoadBlock
     }
+    
+//    func standing() {
+//        self.runAction(SKAction.repeatActionForever(
+//            SKAction.animateWithTextures(playerStandingFrames,
+//                timePerFrame: 1,
+//                resize: false,
+//                restore: true)),
+//            withKey:"standingInPlacePlayer")
+//    }
 }

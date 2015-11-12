@@ -22,6 +22,7 @@
 		52839FD31BED6F160022C2B9 /* GameStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52839FD21BED6F160022C2B9 /* GameStartViewController.swift */; };
 		5289B0B81BF2768C002DF209 /* GameStartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5289B0B71BF2768C002DF209 /* GameStartScene.sks */; };
 		5289B0BA1BF28000002DF209 /* DeathBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5289B0B91BF28000002DF209 /* DeathBall.swift */; };
+		5289B0C81BF29AEC002DF209 /* PlayerStandingImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 5289B0C71BF29AEC002DF209 /* PlayerStandingImages.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		52839FD21BED6F160022C2B9 /* GameStartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStartViewController.swift; sourceTree = "<group>"; };
 		5289B0B71BF2768C002DF209 /* GameStartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameStartScene.sks; sourceTree = "<group>"; };
 		5289B0B91BF28000002DF209 /* DeathBall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeathBall.swift; sourceTree = "<group>"; };
+		5289B0C71BF29AEC002DF209 /* PlayerStandingImages.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerStandingImages.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 		5256F55F1BE00A98008D8318 /* Balling Falls */ = {
 			isa = PBXGroup;
 			children = (
+				5289B0C71BF29AEC002DF209 /* PlayerStandingImages.atlas */,
 				523F92401BF145A600D63022 /* IndieFlower.ttf */,
 				5256F5601BE00A98008D8318 /* AppDelegate.swift */,
 				5256F5621BE00A98008D8318 /* GameScene.sks */,
@@ -240,6 +243,7 @@
 				5256F56F1BE00A98008D8318 /* LaunchScreen.storyboard in Resources */,
 				5256F56C1BE00A98008D8318 /* Assets.xcassets in Resources */,
 				5256F56A1BE00A98008D8318 /* Main.storyboard in Resources */,
+				5289B0C81BF29AEC002DF209 /* PlayerStandingImages.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

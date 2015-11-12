@@ -11,6 +11,7 @@ import SpriteKit
 import CoreMotion
 import Foundation
 
+let colliderTypeRoadBlock = UInt32(3)
 let colliderTypePlayer = UInt32(2)
 let colliderTypeWall = UInt32(1)
 let colliderTypeBall = UInt32(0)
@@ -37,11 +38,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         motionManager.startAccelerometerUpdates()
         self.physicsWorld.contactDelegate = self
         
-        let frameEdge = CGRect(x: -20, y: 0, width: self.frame.size.width + 300, height: self.frame.size.height)
+        let frameEdge = CGRect(x: -20, y: 20, width: self.frame.size.width + 300, height: self.frame.size.height)
         let borderBody = SKPhysicsBody(edgeLoopFromRect: frameEdge)
         borderBody.friction = 0
         borderBody.categoryBitMask = colliderTypeWall
         self.physicsBody = borderBody
+        
+        self.addRightRoadBlock()
         
         self.startGame()
     }
@@ -60,8 +63,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for ball in balls {
             self.removeBall(balls.indexOf(ball)!)
         }
-    
-        player = Player(width: 30, height: 80)
+        
+        player = Player()
         scoreText = SKLabelNode(fontNamed: "IndieFlower")
         scoreText.fontSize = 30
         scoreText.fontColor = SKColor.blackColor()
@@ -81,7 +84,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func removePlayer() {
         isGameOver = true
-        
+
         let playerPosition = player.position
         player?.removeFromParent()
         
@@ -137,6 +140,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.position = CGPoint(x: CGRectGetMidX(self.frame), y: 50)
         self.addChild(player)
         player.addPhysics()
+//        player.standing()
+    }
+    
+    func addRightRoadBlock() {
+        let block = SKShapeNode(rectOfSize: CGSize(width: 100, height: 100))
+        block.fillColor = SKColor.redColor()
+        block.position = CGPoint(x: 1100, y: 50)
+        self.addChild(block)
+        
+        block.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: 100, height: 100))
+        block.physicsBody!.dynamic = false
+        block.physicsBody!.affectedByGravity = true
+        block.physicsBody!.categoryBitMask = colliderTypeRoadBlock
+        block.physicsBody!.collisionBitMask = colliderTypePlayer
     }
     
     func gameOver() {
