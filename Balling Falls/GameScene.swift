@@ -10,6 +10,7 @@ import UIKit
 import SpriteKit
 import CoreMotion
 import Foundation
+import AVFoundation
 
 let colliderTypeRoadBlock = UInt32(3)
 let colliderTypePlayer = UInt32(2)
@@ -26,11 +27,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let velocity: CGFloat = 100.0
     var timer: NSTimer?
     var isGameOver = false
-    
     var score: Int = 0
     var scoreText: SKLabelNode!
-    
     var playAgainGameButton: GameButton!
+    var playerDeathSound : AVAudioPlayer?
     
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
@@ -76,6 +76,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addPlayer()
         
         timer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: Selector("addBall"), userInfo: nil, repeats: true)
+        
+        if let playerDeathSound = self.setupAudioPlayerWithFile("playerDeathSound", type:"mp3") {
+            self.playerDeathSound = playerDeathSound
+        }
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
@@ -84,9 +88,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func removePlayer() {
         isGameOver = true
-
+    
         playerPosition = player.position
         player?.removeFromParent()
+        playerDeathSound?.play()
         
         for _ in 0...score/10 {
             self.addBall()
@@ -157,5 +162,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         playAgainGameButton = GameButton(defaultButtonImage: "playAgainButton", activeButtonImage: "playAgainButton", buttonAction: startGame)
         playAgainGameButton.position = CGPointMake(self.frame.width / 2, self.frame.height / 2)
         self.addChild(playAgainGameButton)
+    }
+    
+    func setupAudioPlayerWithFile(file:NSString, type:NSString) -> AVAudioPlayer?  {
+        let path = NSBundle.mainBundle().pathForResource(file as String, ofType: type as String)
+        let url = NSURL.fileURLWithPath(path!)
+        var audioPlayer:AVAudioPlayer?
+        
+        do {
+            try audioPlayer = AVAudioPlayer(contentsOfURL: url)
+        } catch {
+            print("Player not available")
+        }
+        
+        return audioPlayer
     }
 }
