@@ -59,7 +59,7 @@ class Ball: SKShapeNode {
         self.physicsBody!.dynamic = true
         self.physicsBody!.categoryBitMask = colliderTypeBall
         self.physicsBody!.contactTestBitMask = colliderTypePlayer
-        self.physicsBody!.collisionBitMask = colliderTypeWall | colliderTypePlayer
+        self.physicsBody!.collisionBitMask = colliderTypePlayer | colliderTypeWall
         self.physicsBody!.applyImpulse(CGVectorMake(xVelocity!, yVelocity!))
     }
     

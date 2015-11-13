@@ -20,9 +20,9 @@
 		5256F56C1BE00A98008D8318 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5256F56B1BE00A98008D8318 /* Assets.xcassets */; };
 		5256F56F1BE00A98008D8318 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5256F56D1BE00A98008D8318 /* LaunchScreen.storyboard */; };
 		5278A4221BF47262001E37FE /* RoadBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5278A4211BF47262001E37FE /* RoadBlock.swift */; };
+		5278A4241BF525D2001E37FE /* playerDeathSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5278A4231BF525D2001E37FE /* playerDeathSound.mp3 */; };
 		52839FD31BED6F160022C2B9 /* GameStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52839FD21BED6F160022C2B9 /* GameStartViewController.swift */; };
 		5289B0B81BF2768C002DF209 /* GameStartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5289B0B71BF2768C002DF209 /* GameStartScene.sks */; };
-		AD52635F1BF51C2500FF4837 /* playerDeathSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AD52635E1BF51C2500FF4837 /* playerDeathSound.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,9 +60,9 @@
 		5256F5751BE00A98008D8318 /* Balling FallsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Balling FallsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5256F5801BE00A98008D8318 /* Balling FallsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Balling FallsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5278A4211BF47262001E37FE /* RoadBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoadBlock.swift; sourceTree = "<group>"; };
+		5278A4231BF525D2001E37FE /* playerDeathSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = playerDeathSound.mp3; sourceTree = "<group>"; };
 		52839FD21BED6F160022C2B9 /* GameStartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStartViewController.swift; sourceTree = "<group>"; };
 		5289B0B71BF2768C002DF209 /* GameStartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameStartScene.sks; sourceTree = "<group>"; };
-		AD52635E1BF51C2500FF4837 /* playerDeathSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = playerDeathSound.mp3; path = ../../playerDeathSound.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				523F92401BF145A600D63022 /* IndieFlower.ttf */,
-				AD52635E1BF51C2500FF4837 /* playerDeathSound.mp3 */,
+				5278A4231BF525D2001E37FE /* playerDeathSound.mp3 */,
 				5256F5601BE00A98008D8318 /* AppDelegate.swift */,
 				5256F5621BE00A98008D8318 /* GameScene.sks */,
 				5256F5641BE00A98008D8318 /* GameScene.swift */,
@@ -200,7 +200,7 @@
 				TargetAttributes = {
 					5256F55C1BE00A98008D8318 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = F77D45TPW7;
+						DevelopmentTeam = UG6RY8E9B5;
 					};
 					5256F5741BE00A98008D8318 = {
 						CreatedOnToolsVersion = 7.1;
@@ -238,7 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				523F92411BF145A600D63022 /* IndieFlower.ttf in Resources */,
-				AD52635F1BF51C2500FF4837 /* playerDeathSound.mp3 in Resources */,
+				5278A4241BF525D2001E37FE /* playerDeathSound.mp3 in Resources */,
 				5289B0B81BF2768C002DF209 /* GameStartScene.sks in Resources */,
 				5256F5631BE00A98008D8318 /* GameScene.sks in Resources */,
 				5256F56F1BE00A98008D8318 /* LaunchScreen.storyboard in Resources */,
@@ -418,7 +418,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Balling Falls/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Balls-to-the-Walls";
+				PRODUCT_BUNDLE_IDENTIFIER = BallingFalls;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -432,7 +432,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Balling Falls/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Balls-to-the-Walls";
+				PRODUCT_BUNDLE_IDENTIFIER = BallingFalls;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

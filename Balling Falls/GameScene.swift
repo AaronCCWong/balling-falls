@@ -12,7 +12,7 @@ import CoreMotion
 import Foundation
 import AVFoundation
 
-let colliderTypeRoadBlock = UInt32(3)
+let colliderTypeRoadBlock = UInt32(4)
 let colliderTypePlayer = UInt32(2)
 let colliderTypeWall = UInt32(1)
 let colliderTypeBall = UInt32(0)
@@ -46,7 +46,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsBody = borderBody
         
         self.startGame()
-//        self.addRightRoadBlock()
+        self.addRoadBlock()
     }
     
     func startGame() {
@@ -83,7 +83,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
-        self.removePlayer()
+        if (contact.bodyA.categoryBitMask == 0 && contact.bodyB.categoryBitMask == 2) ||
+            (contact.bodyA.categoryBitMask == 2 && contact.bodyB.categoryBitMask == 0) {
+            self.removePlayer()
+        }
     }
     
     func removePlayer() {
@@ -142,11 +145,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.position = CGPoint(x: CGRectGetMidX(self.frame), y: 50)
         self.addChild(player)
         player.addPhysics()
-//        player.standing()
     }
     
-    func addRightRoadBlock() {
-        let rightBlock = RoadBlock(position: CGPoint(x: 500, y: 0))
+    func addRoadBlock() {
+        let leftBlock = RoadBlock(position: CGPoint(x: 0, y: 50))
+        self.addChild(leftBlock)
+        leftBlock.addPhysics()
+        
+        let rightBlock = RoadBlock(position: CGPoint(x: 1150, y: 50))
         self.addChild(rightBlock)
         rightBlock.addPhysics()
     }
