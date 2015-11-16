@@ -23,7 +23,7 @@ let motionManager: CMMotionManager = CMMotionManager()
 class GameScene: SKScene, SKPhysicsContactDelegate {
     var balls: [SKShapeNode] = []
     var player: Player!
-    let tilt: Double = 0.1
+    let tilt: Double = 0.05
     let velocity: CGFloat = 100.0
     var timer: NSTimer?
     var isGameOver = false

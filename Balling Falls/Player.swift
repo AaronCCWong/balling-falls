@@ -33,10 +33,11 @@ class Player: SKSpriteNode {
     
     func standingAnimate() {
         var playerTextures: [SKTexture] = []
-        for i in 1...3 {
+        for i in 0...3 {
             playerTextures.append(SKTexture(imageNamed: "Standing\(i)"))
         }
         playerTextures.append(SKTexture(imageNamed: "Standing2"))
+        playerTextures.append(SKTexture(imageNamed: "Standing1"))
         let playerAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(playerTextures, timePerFrame: 0.1))
         self.runAction(playerAnimation)
     }
