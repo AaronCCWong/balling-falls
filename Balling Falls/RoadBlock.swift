@@ -32,8 +32,8 @@ class RoadBlock: SKShapeNode {
         self.physicsBody!.dynamic = true
         self.physicsBody!.affectedByGravity = false
         self.physicsBody!.mass = 100
-        self.physicsBody!.categoryBitMask = colliderTypeRoadBlock
-        self.physicsBody!.contactTestBitMask = colliderTypePlayer
-        self.physicsBody!.collisionBitMask = colliderTypePlayer | colliderTypeWall
+        self.physicsBody!.categoryBitMask = ColliderType.colliderTypeRoadBlock.rawValue
+        self.physicsBody!.contactTestBitMask = ColliderType.colliderTypePlayer.rawValue
+        self.physicsBody!.collisionBitMask = ColliderType.colliderTypePlayer.rawValue | ColliderType.colliderTypeWall.rawValue
     }
 }

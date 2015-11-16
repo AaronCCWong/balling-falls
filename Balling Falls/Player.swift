@@ -26,9 +26,9 @@ class Player: SKSpriteNode {
         self.physicsBody!.affectedByGravity = true
         self.physicsBody!.mass = 0.02
         self.physicsBody!.allowsRotation = false
-        self.physicsBody!.categoryBitMask = colliderTypePlayer
-        self.physicsBody!.contactTestBitMask = colliderTypeBall
-        self.physicsBody!.collisionBitMask = colliderTypeWall | colliderTypeBall | colliderTypeRoadBlock
+        self.physicsBody!.categoryBitMask = ColliderType.colliderTypePlayer.rawValue
+        self.physicsBody!.contactTestBitMask = ColliderType.colliderTypeBall.rawValue
+        self.physicsBody!.collisionBitMask = ColliderType.colliderTypeWall.rawValue | ColliderType.colliderTypeBall.rawValue | ColliderType.colliderTypeRoadBlock.rawValue
     }
     
     func standingAnimate() {

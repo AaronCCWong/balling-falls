@@ -12,12 +12,14 @@ import CoreMotion
 import Foundation
 import AVFoundation
 
-let colliderTypeRoadBlock = UInt32(4)
-let colliderTypePlayer = UInt32(2)
-let colliderTypeWall = UInt32(1)
-let colliderTypeBall = UInt32(0)
-var playerPosition: CGPoint?
+enum ColliderType: UInt32 {
+    case colliderTypeRoadBlock = 4
+    case colliderTypePlayer = 2
+    case colliderTypeWall = 1
+    case colliderTypeBall = 0
+}
 
+var playerPosition: CGPoint?
 let motionManager: CMMotionManager = CMMotionManager()
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -42,7 +44,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let frameEdge = CGRect(x: -20, y: 20, width: self.frame.size.width + 300, height: self.frame.size.height)
         let borderBody = SKPhysicsBody(edgeLoopFromRect: frameEdge)
         borderBody.friction = 0
-        borderBody.categoryBitMask = colliderTypeWall
+        borderBody.categoryBitMask = ColliderType.colliderTypeWall.rawValue
         self.physicsBody = borderBody
         
         self.startGame()
