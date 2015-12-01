@@ -26,17 +26,18 @@ class Player: SKSpriteNode {
         self.physicsBody!.affectedByGravity = true
         self.physicsBody!.mass = 0.02
         self.physicsBody!.allowsRotation = false
-        self.physicsBody!.categoryBitMask = colliderTypePlayer
-        self.physicsBody!.contactTestBitMask = colliderTypeBall
-        self.physicsBody!.collisionBitMask = colliderTypeWall | colliderTypeBall | colliderTypeRoadBlock
+        self.physicsBody!.categoryBitMask = ColliderType.colliderTypePlayer.rawValue
+        self.physicsBody!.contactTestBitMask = ColliderType.colliderTypeBall.rawValue
+        self.physicsBody!.collisionBitMask = ColliderType.colliderTypeWall.rawValue | ColliderType.colliderTypeBall.rawValue | ColliderType.colliderTypeRoadBlock.rawValue
     }
     
     func standingAnimate() {
         var playerTextures: [SKTexture] = []
-        for i in 1...3 {
+        for i in 0...3 {
             playerTextures.append(SKTexture(imageNamed: "Standing\(i)"))
         }
         playerTextures.append(SKTexture(imageNamed: "Standing2"))
+        playerTextures.append(SKTexture(imageNamed: "Standing1"))
         let playerAnimation = SKAction.repeatActionForever(SKAction.animateWithTextures(playerTextures, timePerFrame: 0.1))
         self.runAction(playerAnimation)
     }

@@ -10,11 +10,15 @@ import UIKit
 import SpriteKit
 
 class RoadBlock: SKShapeNode {
+    var blockPosition: CGPoint?
+    
     init(position: CGPoint) {
         super.init()
-        self.path = CGPathCreateWithRect(CGRect(origin: position, size: CGSize(width: 10, height: 100)), nil)
-        self.strokeColor = UIColor(red: 255, green: 0, blue: 0, alpha: 0.6)
-        self.fillColor = UIColor(red: 255, green: 0, blue: 0, alpha: 0.6)
+        blockPosition = position
+        
+        self.path = CGPathCreateWithRect(CGRect(origin: position, size: CGSize(width: 200, height: 100)), nil)
+        self.strokeColor = UIColor(red: 255, green: 255, blue: 255, alpha: 0.6)
+        self.fillColor = UIColor(red: 255, green: 255, blue: 255, alpha: 0.6)
         self.lineWidth = 4
     }
 
@@ -23,11 +27,13 @@ class RoadBlock: SKShapeNode {
     }
     
     func addPhysics() {
-        self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: 100, height: 100))
+        self.position = blockPosition!
+        self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: 200, height: 100))
         self.physicsBody!.dynamic = true
-        self.physicsBody!.affectedByGravity = true
+        self.physicsBody!.affectedByGravity = false
         self.physicsBody!.mass = 100
-        self.physicsBody!.categoryBitMask = colliderTypeRoadBlock
-        self.physicsBody!.collisionBitMask = colliderTypeWall
+        self.physicsBody!.categoryBitMask = ColliderType.colliderTypeRoadBlock.rawValue
+        self.physicsBody!.contactTestBitMask = ColliderType.colliderTypePlayer.rawValue
+        self.physicsBody!.collisionBitMask = ColliderType.colliderTypePlayer.rawValue | ColliderType.colliderTypeWall.rawValue
     }
 }

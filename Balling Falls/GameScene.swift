@@ -12,18 +12,20 @@ import CoreMotion
 import Foundation
 import AVFoundation
 
-let colliderTypeRoadBlock = UInt32(3)
-let colliderTypePlayer = UInt32(2)
-let colliderTypeWall = UInt32(1)
-let colliderTypeBall = UInt32(0)
-var playerPosition: CGPoint?
+enum ColliderType: UInt32 {
+    case colliderTypeRoadBlock = 4
+    case colliderTypePlayer = 2
+    case colliderTypeWall = 1
+    case colliderTypeBall = 0
+}
 
+var playerPosition: CGPoint?
 let motionManager: CMMotionManager = CMMotionManager()
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     var balls: [SKShapeNode] = []
     var player: Player!
-    let tilt: Double = 0.1
+    let tilt: Double = 0.05
     let velocity: CGFloat = 100.0
     var timer: NSTimer?
     var isGameOver = false
@@ -42,11 +44,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let frameEdge = CGRect(x: -20, y: 20, width: self.frame.size.width + 300, height: self.frame.size.height)
         let borderBody = SKPhysicsBody(edgeLoopFromRect: frameEdge)
         borderBody.friction = 0
-        borderBody.categoryBitMask = colliderTypeWall
+        borderBody.categoryBitMask = ColliderType.colliderTypeWall.rawValue
         self.physicsBody = borderBody
         
         self.startGame()
-//        self.addRightRoadBlock()
+        self.addRoadBlock()
     }
     
     func startGame() {
@@ -83,7 +85,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
-        self.removePlayer()
+        if (contact.bodyA.categoryBitMask == 0 && contact.bodyB.categoryBitMask == 2) ||
+            (contact.bodyA.categoryBitMask == 2 && contact.bodyB.categoryBitMask == 0) {
+            self.removePlayer()
+        }
     }
     
     func removePlayer() {
@@ -142,11 +147,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.position = CGPoint(x: CGRectGetMidX(self.frame), y: 50)
         self.addChild(player)
         player.addPhysics()
-//        player.standing()
     }
     
-    func addRightRoadBlock() {
-        let rightBlock = RoadBlock(position: CGPoint(x: 500, y: 0))
+    func addRoadBlock() {
+        let leftBlock = RoadBlock(position: CGPoint(x: 0, y: 50))
+        self.addChild(leftBlock)
+        leftBlock.addPhysics()
+        
+        let rightBlock = RoadBlock(position: CGPoint(x: 1150, y: 50))
         self.addChild(rightBlock)
         rightBlock.addPhysics()
     }
