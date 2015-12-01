@@ -81,6 +81,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if let playerDeathSound = self.setupAudioPlayerWithFile("playerDeathSound", type:"mp3") {
             self.playerDeathSound = playerDeathSound
+            self.playerDeathSound?.prepareToPlay()
         }
     }
     

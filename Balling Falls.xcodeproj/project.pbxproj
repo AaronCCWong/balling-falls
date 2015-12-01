@@ -200,7 +200,7 @@
 				TargetAttributes = {
 					5256F55C1BE00A98008D8318 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = UG6RY8E9B5;
+						DevelopmentTeam = F77D45TPW7;
 					};
 					5256F5741BE00A98008D8318 = {
 						CreatedOnToolsVersion = 7.1;
@@ -418,7 +418,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Balling Falls/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = BallingFalls;
+				PRODUCT_BUNDLE_IDENTIFIER = "Balling-Falls";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -432,7 +432,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Balling Falls/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = BallingFalls;
+				PRODUCT_BUNDLE_IDENTIFIER = "Balling-Falls";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
